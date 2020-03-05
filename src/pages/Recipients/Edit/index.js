@@ -1,11 +1,11 @@
 import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 
-export default function Register() {
+export default function Edit() {
   return (
     <>
       <header>
-        <h1>Cadastro de destinatários</h1>
+        <h1>Edição de destinatário</h1>
         <aside>
           <button type="button">Voltar</button>
           <button type="button" className="save">

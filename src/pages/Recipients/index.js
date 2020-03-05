@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Recipients() {
-  return <div />;
+  return <h1>Recipients</h1>;
 }

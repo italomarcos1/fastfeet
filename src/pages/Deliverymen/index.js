@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default function Deliverymen() {
-  return <div />;
+  return <h1>Deliverymen</h1>;
 }

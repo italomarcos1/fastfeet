@@ -1,77 +1,120 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   width: 900px;
-  height: 900px; /** discutivel */
-  margin-top: 91px;
-  background-color: #f0f;
+  height: 300px; /** discutivel */
+  background-color: none;
+  margin: 27px auto;
 
-  div {
+  header {
+    flex: 1;
     height: 112px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    background-color: none;
 
     h1 {
-      color: #444444;
+      color: #333;
       font-size: 24px;
       font-weight: bold;
       text-align: left;
     }
-    button {
+
+    aside {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
 
-      svg {
-        color: currentColor;
-        width: 7px;
-        height: 12px;
+      button {
+        background: #cccccc;
+        border-radius: 4px;
+        border: none;
+        color: #fff;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-size: 14px;
+        font-weight: bold;
+        margin-left: 20px;
+
+        width: 112px;
+        height: 36px;
+        text-align: center;
+
+        &.save {
+          background-color: #7d40e7;
+          &:hover {
+            background-color: ${darken(0.12, '#7d40e7')};
+          }
+        }
+
+        &:hover {
+          background-color: ${darken(0.1, '#ccc')};
+        }
+
+        svg {
+          color: currentColor;
+          width: 7px;
+          height: 12px;
+        }
       }
-
-      width: 112px;
-      height: 36px;
-      background: #cccccc;
-      border-radius: 4px;
-      font-size: 14px;
-      text-align: center;
-      font-weight: bold;
     }
   }
-`;
 
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: left; /** seria individual de cada tag? */
-
-  strong {
-    color: #444444;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: left; /** heh */
-    margin-bottom: 9px;
-  }
-
-  input {
+  form {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /* flex:1; */
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    color: #fff;
-    padding: 12px 10px 12px 15px;
-    text-align: left; /** sera q nao eh no placeholder? se pa cair pra todos */
+    flex-direction: column;
+    padding: 26px 30px 37px;
+    background-color: #fff;
 
-    svg {
-      color: #ddd;
+    img {
+      align-self: center;
+      border: 3px solid #eee;
+
+      border-radius: 50%;
     }
 
-    &::placeholder {
-      color: #999999;
-      text-align: left;
+    div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      span {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-bottom: 9px;
+
+        strong {
+          color: #444444;
+          font-size: 14px;
+          font-weight: bold;
+          text-align: left; /** heh */
+          margin-bottom: 9px;
+        }
+
+        input {
+          display: flex;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          flex: 1;
+          color: #999;
+          padding: 12px 10px 12px 15px;
+          text-align: left; /** sera q nao eh no placeholder? se pa cair pra todos */
+
+          &::placeholder {
+            color: #999999;
+            text-align: left;
+          }
+
+          svg {
+            color: #ddd;
+          }
+        }
+      }
     }
   }
 `;
