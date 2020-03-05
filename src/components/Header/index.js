@@ -4,7 +4,7 @@ import { signOut } from '~/store/modules/auth/actions';
 
 import { Container, Content, Label } from './styles';
 
-import logo from '~/assets/fastfeet-logo.png';
+import logo from '~/assets/logo.svg';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -13,9 +13,7 @@ export default function Header() {
   function handleLogOut() {
     dispatch(signOut());
   }
-  // array de valores
-  // uma funcao q zera todos
-  // OU um valor compartilhado
+
   return (
     <Container>
       <Content>
