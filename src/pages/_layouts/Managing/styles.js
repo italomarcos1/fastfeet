@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 export const Container = styled.div`
   width: 900px;
@@ -8,16 +7,14 @@ export const Container = styled.div`
   margin: 27px auto;
 
   h1 {
-    color: #f0f;
+    color: #444;
     font-size: 24px;
     font-weight: bold;
     text-align: left;
-    display: flex;
-    flex: 1;
+    display: block;
   }
 
   header {
-    flex: 1;
     height: 112px;
     display: flex;
     align-items: center;
@@ -29,64 +26,61 @@ export const Container = styled.div`
     div {
       display: flex;
 
-      input {
-        display: flex;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        flex: 1;
-        color: #999;
-        padding: 12px 10px 12px 15px;
-        text-align: left; /** sera q nao eh no placeholder? se pa cair pra todos */
-
-        &::placeholder {
-          color: #999999;
-          text-align: left;
-        }
-
-        svg {
-          color: #ddd;
-        }
-      }
-
       aside {
         display: flex;
-
-        button {
-          background: #cccccc;
-          border-radius: 4px;
-          border: none;
-          color: #fff;
-
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          font-size: 14px;
-          font-weight: bold;
-          margin-left: 20px;
-
-          width: 112px;
-          height: 36px;
-          text-align: center;
-
-          &.save {
-            background-color: #7d40e7;
-            &:hover {
-              background-color: ${darken(0.12, '#7d40e7')};
-            }
-          }
-
-          &:hover {
-            background-color: ${darken(0.1, '#ccc')};
-          }
-
-          svg {
-            color: currentColor;
-            width: 7px;
-            height: 12px;
-          }
-        }
       }
     }
+  }
+
+  ul {
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      flex: 1;
+      font-size: 16px;
+      color: #666;
+      height: 57px;
+      padding: 20px 25px;
+
+      small {
+        span {
+          background-color: #f0f;
+          padding: 7px 8px;
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+      }
+
+      button {
+        background: none;
+        border: 0;
+      }
+    }
+  }
+`;
+
+export const Status = styled.span`
+  font-weight: bold;
+  font-size: 14px;
+  color: #2ca42b;
+  background-color: #dff0df;
+  width: 99px;
+  height: 25px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  /** largura variavel pra caber texto grande e nao espremer conteudo */
+  span {
+    width: 10px;
+    height: 10px;
+    background-color: #2ca42b;
+    border-radius: 50%;
+    margin: 0 3px;
   }
 `;

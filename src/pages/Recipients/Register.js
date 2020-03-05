@@ -1,5 +1,8 @@
 import React from 'react';
-import { Form, Input } from '@rocketseat/unform';
+import { Form } from '@rocketseat/unform';
+
+import { TextInput as Input } from '~/components/Input';
+import { Button } from '~/components/Button';
 
 export default function Register() {
   return (
@@ -7,10 +10,8 @@ export default function Register() {
       <header>
         <h1>Cadastro de destinatários</h1>
         <aside>
-          <button type="button">Voltar</button>
-          <button type="button" className="save">
-            Salvar
-          </button>
+          <Button>Voltar</Button>
+          <Button className="save">Salvar</Button>
         </aside>
       </header>
       <Form>

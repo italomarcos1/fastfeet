@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 export const Container = styled.div`
   width: 900px;
@@ -25,42 +24,6 @@ export const Container = styled.div`
 
     aside {
       display: flex;
-
-      button {
-        background: #cccccc;
-        border-radius: 4px;
-        border: none;
-        color: #fff;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        font-size: 14px;
-        font-weight: bold;
-        margin-left: 20px;
-
-        width: 112px;
-        height: 36px;
-        text-align: center;
-
-        &.save {
-          background-color: #7d40e7;
-          &:hover {
-            background-color: ${darken(0.12, '#7d40e7')};
-          }
-        }
-
-        &:hover {
-          background-color: ${darken(0.1, '#ccc')};
-        }
-
-        svg {
-          color: currentColor;
-          width: 7px;
-          height: 12px;
-        }
-      }
     }
   }
 
@@ -95,25 +58,6 @@ export const Container = styled.div`
           font-weight: bold;
           text-align: left; /** heh */
           margin-bottom: 9px;
-        }
-
-        input {
-          display: flex;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          flex: 1;
-          color: #999;
-          padding: 12px 10px 12px 15px;
-          text-align: left; /** sera q nao eh no placeholder? se pa cair pra todos */
-
-          &::placeholder {
-            color: #999999;
-            text-align: left;
-          }
-
-          svg {
-            color: #ddd;
-          }
         }
       }
     }
