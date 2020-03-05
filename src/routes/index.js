@@ -24,17 +24,25 @@ export default function Routes() {
     <Switch>
       <Route path="/" exact component={Sign} />
 
-      <Route path="/orders" component={Orders} isPrivate />
+      <Route
+        path="/orders"
+        principal={false}
+        subRoute
+        component={Orders}
+        isPrivate
+      />
       <Route path="/deliverymen" component={Deliverymen} isPrivate />
       <Route
         path="/registerDeliverymen"
         component={RegisterDeliverymen}
         subRoute
+        principal
         isPrivate
       />
       <Route
         path="/editDeliverymen"
         subRoute
+        principal
         component={EditDeliverymen}
         isPrivate
       />
@@ -42,6 +50,7 @@ export default function Routes() {
       <Route
         path="/editRecipient"
         subRoute
+        principal
         component={EditRecipient}
         isPrivate
       />
@@ -50,14 +59,17 @@ export default function Routes() {
         path="/registerRecipients"
         component={RegisterRecipients}
         subRoute
+        principal
         isPrivate
       />
       <Route
         path="/registerOrders"
         component={RegisterOrders}
         subRoute
+        principal
         isPrivate
       />
+
       <Route path="/problems" component={DeliveryProblems} isPrivate />
     </Switch>
   );
