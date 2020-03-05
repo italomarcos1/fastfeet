@@ -13,6 +13,10 @@ export default createGlobalStyle`
         box-sizing: border-box;
     }
 
+    body, input, button {
+      font: 16px Roboto, sans-serif;
+    }
+
     *:focus{
         outline: 0;
     }

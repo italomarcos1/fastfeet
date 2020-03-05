@@ -21,13 +21,24 @@ export const Container = styled.div`
 
   height: 425px;
   width: 360px;
-  padding: 30px 30px;
+  padding: 0px 30px;
   margin: 0 auto;
 
   opacity: 1;
 
-  /* svg {
-  } */
+  h1 {
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+    color: #444444;
+    text-transform: uppercase;
+  }
+
+  img {
+    /* fit this image later */
+    height: 60px;
+    width: 250px;
+  }
 
   form {
     input {
@@ -50,6 +61,9 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
+
+      font-size: 16px;
+      font-weight: bold;
 
       height: 40px;
       width: 100%;
