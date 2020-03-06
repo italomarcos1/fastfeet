@@ -1,10 +1,28 @@
 import React from 'react';
+import * as Yup from 'yup';
+
 import { Form } from '@rocketseat/unform';
 
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
+import api from '~/services/api';
+
 export default function Register() {
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    email: Yup.string()
+      .email()
+      .required(),
+  });
+
+  async function handleAdd(data) {
+    console.tron.log(data);
+
+    const response = await api.post('register', data);
+
+    console.tron.log(response.data);
+  }
   return (
     <>
       <header>
@@ -14,7 +32,7 @@ export default function Register() {
           <Button className="save">Salvar</Button>
         </aside>
       </header>
-      <Form>
+      <Form onSubmit={handleAdd} schema={schema}>
         <img
           src="https://api.adorable.io/avatars/100/abott@adorable.png"
           alt="abott"
@@ -37,6 +55,7 @@ export default function Register() {
             />
           </span>
         </div>
+        <button type="submit"> clica aki</button>
       </Form>
     </>
   );

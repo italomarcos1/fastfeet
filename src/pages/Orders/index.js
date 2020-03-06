@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { FaEllipsisH } from 'react-icons/fa';
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
+import Sidebar from '~/components/Sidebar';
 
 import { Status } from '~/pages/_layouts/Managing/styles';
 
@@ -59,9 +59,7 @@ export default function Orders() {
               <Status>
                 <span /> {order.delivered}
               </Status>
-              <button type="button">
-                <FaEllipsisH size={30} color="#c6c6c6" />
-              </button>
+              <Sidebar />
             </li>
           ))}
         </ul>

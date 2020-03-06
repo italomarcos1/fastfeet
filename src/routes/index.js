@@ -5,6 +5,9 @@ import Route from './RouteWrapper';
 
 import Sign from '~/pages/Sign';
 
+import List from '~/pages/_layouts/List';
+import Managing from '~/pages/_layouts/Managing';
+
 import Orders from '~/pages/Orders';
 import RegisterOrders from '~/pages/Orders/Register';
 import EditOrders from '~/pages/Orders/Edit';
@@ -26,65 +29,71 @@ export default function Routes() {
 
       <Route
         path="/orders"
-        principal={false}
-        subRoute
+        layout={Managing}
         component={Orders}
         isPrivate
+        exact
       />
+
+      <Route
+        path="/orders/register"
+        layout={List}
+        component={RegisterOrders}
+        isPrivate
+      />
+
+      <Route
+        path="/orders/edit"
+        layout={List}
+        component={EditOrders}
+        isPrivate
+      />
+
       <Route
         path="/deliverymen"
-        subRoute
-        principal={false}
+        exact
+        layout={Managing}
         component={Deliverymen}
         isPrivate
       />
+
       <Route
-        path="/registerDeliverymen"
+        path="/deliverymen/register"
         component={RegisterDeliverymen}
-        subRoute
+        layout={List}
         isPrivate
       />
       <Route
-        path="/editDeliverymen"
-        subRoute
-        principal
+        path="/deliverymen/edit"
+        layout={List}
         component={EditDeliverymen}
         isPrivate
       />
-      <Route path="/editOrders" subRoute component={EditOrders} isPrivate />
-      <Route
-        path="/editRecipient"
-        subRoute
-        principal
-        component={EditRecipient}
-        isPrivate
-      />
+
       <Route
         path="/recipients"
-        subRoute
-        principal={false}
+        exact
+        layout={Managing}
         component={Recipients}
         isPrivate
       />
+
       <Route
-        path="/registerRecipients"
+        path="/recipients/register"
         component={RegisterRecipients}
-        subRoute
-        principal
+        layout={List}
         isPrivate
       />
       <Route
-        path="/registerOrders"
-        component={RegisterOrders}
-        subRoute
-        principal
+        path="/recipients/edit"
+        layout={Managing}
+        component={EditRecipient}
         isPrivate
       />
 
       <Route
         path="/problems"
-        subRoute
-        principal={false}
+        layout={List}
         component={DeliveryProblems}
         isPrivate
       />

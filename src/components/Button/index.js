@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { darken } from 'polished';
 
 export const Button = styled.button.attrs({
-  type: 'button',
+  type: 'submit',
 })`
   background: #ccc;
   border-radius: 4px;

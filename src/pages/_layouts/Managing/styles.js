@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
 
 export const Container = styled.div`
   width: 900px;
@@ -72,41 +71,6 @@ export const Container = styled.div`
         background: none;
         border: 0;
       }
-    }
-  }
-`;
-
-export const NotificationList = styled.div`
-  div {
-    background-color: #f0f;
-    left: calc(100% - 110px);
-    top: calc(50% + 15px);
-    position: absolute;
-    width: 150px;
-    height: 120px;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    box-shadow: 0px 0px 2px #00000026;
-
-    button {
-      background: none;
-      border: 0;
-      font-size: 16px;
-      color: #999;
-
-      &:hover {
-        color: ${darken(0.12, '#999')};
-      }
-
-      svg {
-        width: 15px;
-        height: 10px;
-      }
-      font-size: 16px;
-      color: #999;
     }
   }
 `;

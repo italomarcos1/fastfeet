@@ -1,10 +1,31 @@
 import React from 'react';
+import * as Yup from 'yup';
+
 import { Form } from '@rocketseat/unform';
 
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
+import api from '~/services/api';
+
 export default function Register() {
+  const schema = Yup.object().shape({
+    name: Yup.string().required(),
+    number: Yup.string().required(),
+    street: Yup.string().required(),
+    complement: Yup.string().required(),
+    city: Yup.string().required(),
+    state: Yup.string().required(),
+    cep: Yup.string().required(),
+  });
+
+  async function handleAdd(data) {
+    console.tron.log(data);
+
+    const response = await api.post('add', data);
+
+    console.tron.log(response.data);
+  }
   return (
     <>
       <header>
@@ -14,7 +35,7 @@ export default function Register() {
           <Button className="save">Salvar</Button>
         </aside>
       </header>
-      <Form>
+      <Form onSubmit={handleAdd} schema={schema}>
         <div>
           <span>
             <strong>Nome</strong>
@@ -51,6 +72,7 @@ export default function Register() {
             <Input name="cep" type="text" placeholder="Informe o CEP" />
           </span>
         </div>
+        <button type="submit">clica ni eu</button>
       </Form>
     </>
   );

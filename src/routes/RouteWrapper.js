@@ -6,14 +6,11 @@ import { store } from '~/store';
 
 import Auth from '~/pages/_layouts/Auth';
 import Default from '~/pages/_layouts/Default';
-import List from '~/pages/_layouts/List';
-import Managing from '~/pages/_layouts/Managing';
 
 export default function RouteWrapper({
   component: Component,
   isPrivate,
-  subRoute,
-  principal,
+  layout: SubLayout,
   ...rest
 }) {
   const { signed } = store.getState().auth;
@@ -27,20 +24,15 @@ export default function RouteWrapper({
   }
 
   const Layout = signed ? Default : Auth;
-  const SubLayout = principal ? List : Managing;
 
   return (
     <Route
       {...rest}
       render={props => (
         <Layout>
-          {subRoute ? (
-            <SubLayout>
-              <Component {...props} />
-            </SubLayout>
-          ) : (
+          <SubLayout>
             <Component {...props} />
-          )}
+          </SubLayout>
         </Layout>
       )}
     />
@@ -53,6 +45,7 @@ RouteWrapper.propTypes = {
   principal: PropTypes.bool,
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
     .isRequired,
+  layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,
 };
 
 RouteWrapper.defaultProps = {
