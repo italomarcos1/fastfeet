@@ -1,11 +1,25 @@
-import React from 'react';
-import { FaOptinMonster } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaEllipsisH } from 'react-icons/fa';
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
 import { Status } from '~/pages/_layouts/Managing/styles';
 
+import api from '~/services/api';
+
 export default function Orders() {
+  const [orders, setOrders] = useState([]);
+
+  useEffect(() => {
+    async function loadOrders() {
+      const response = await api.get('orders');
+
+      setOrders(response.data);
+    }
+
+    loadOrders();
+  }, []); //eslint-disable-line
+
   return (
     <>
       <header>
@@ -32,22 +46,24 @@ export default function Orders() {
           <strong>Ações</strong>
         </header>
         <ul>
-          <li>
-            <small>#01</small>
-            <small>Italo Marcos</small>
-            <small>
-              <span>JD</span>
-              John Doe
-            </small>
-            <small>Ponte Alta</small>
-            <small>DF</small>
-            <Status>
-              <span /> Entregue
-            </Status>
-            <button type="button">
-              <FaOptinMonster size={20} color="#c6c6c6" />
-            </button>
-          </li>
+          {orders.map(order => (
+            <li key={order.id}>
+              <small>{`#${order.id}`}</small>
+              <small>{order.recipient.name}</small>
+              <small>
+                <span>JD</span>
+                {order.deliveryman.name}
+              </small>
+              <small>{order.recipient.city}</small>
+              <small>{order.recipient.state}</small>
+              <Status>
+                <span /> {order.delivered}
+              </Status>
+              <button type="button">
+                <FaEllipsisH size={30} color="#c6c6c6" />
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
     </>

@@ -29,9 +29,6 @@ export default function RouteWrapper({
   const Layout = signed ? Default : Auth;
   const SubLayout = principal ? List : Managing;
 
-  console.tron.log(SubLayout);
-  console.tron.log(principal);
-
   return (
     <Route
       {...rest}

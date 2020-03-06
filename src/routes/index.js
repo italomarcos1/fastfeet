@@ -31,12 +31,17 @@ export default function Routes() {
         component={Orders}
         isPrivate
       />
-      <Route path="/deliverymen" component={Deliverymen} isPrivate />
+      <Route
+        path="/deliverymen"
+        subRoute
+        principal={false}
+        component={Deliverymen}
+        isPrivate
+      />
       <Route
         path="/registerDeliverymen"
         component={RegisterDeliverymen}
         subRoute
-        principal
         isPrivate
       />
       <Route
@@ -54,7 +59,13 @@ export default function Routes() {
         component={EditRecipient}
         isPrivate
       />
-      <Route path="/recipients" component={Recipients} isPrivate />
+      <Route
+        path="/recipients"
+        subRoute
+        principal={false}
+        component={Recipients}
+        isPrivate
+      />
       <Route
         path="/registerRecipients"
         component={RegisterRecipients}
@@ -70,7 +81,13 @@ export default function Routes() {
         isPrivate
       />
 
-      <Route path="/problems" component={DeliveryProblems} isPrivate />
+      <Route
+        path="/problems"
+        subRoute
+        principal={false}
+        component={DeliveryProblems}
+        isPrivate
+      />
     </Switch>
   );
 }

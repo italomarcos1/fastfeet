@@ -1,10 +1,13 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   width: 900px;
   height: 300px;
   background-color: none;
   margin: 27px auto;
+  position: relative;
+  flex-direction: column;
 
   h1 {
     color: #444;
@@ -12,6 +15,7 @@ export const Container = styled.div`
     font-weight: bold;
     text-align: left;
     display: block;
+    width: 900px;
   }
 
   header {
@@ -34,6 +38,7 @@ export const Container = styled.div`
 
   ul {
     li {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -43,6 +48,14 @@ export const Container = styled.div`
       color: #666;
       height: 57px;
       padding: 20px 25px;
+      margin-bottom: 21px;
+
+      img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
 
       small {
         span {
@@ -59,6 +72,41 @@ export const Container = styled.div`
         background: none;
         border: 0;
       }
+    }
+  }
+`;
+
+export const NotificationList = styled.div`
+  div {
+    background-color: #f0f;
+    left: calc(100% - 110px);
+    top: calc(50% + 15px);
+    position: absolute;
+    width: 150px;
+    height: 120px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px 0px 2px #00000026;
+
+    button {
+      background: none;
+      border: 0;
+      font-size: 16px;
+      color: #999;
+
+      &:hover {
+        color: ${darken(0.12, '#999')};
+      }
+
+      svg {
+        width: 15px;
+        height: 10px;
+      }
+      font-size: 16px;
+      color: #999;
     }
   }
 `;
