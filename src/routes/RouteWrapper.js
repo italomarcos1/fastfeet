@@ -12,7 +12,7 @@ export default function RouteWrapper({
   component: Component,
   isPrivate,
   layout: SubLayout,
-  path,
+  headerTab,
   ...rest
 }) {
   const { signed } = store.getState().auth;
@@ -28,7 +28,7 @@ export default function RouteWrapper({
 
   const Layout = signed ? Default : Auth;
 
-  dispatch({ type: `@selected${path}` });
+  dispatch({ type: `@selected${headerTab}` });
 
   return (
     <Route
@@ -48,7 +48,7 @@ RouteWrapper.propTypes = {
   isPrivate: PropTypes.bool,
   subRoute: PropTypes.bool,
   principal: PropTypes.bool,
-  path: PropTypes.string.isRequired,
+  headerTab: PropTypes.string.isRequired,
   component: PropTypes.oneOfType([PropTypes.func, PropTypes.element])
     .isRequired,
   layout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]).isRequired,

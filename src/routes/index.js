@@ -34,6 +34,7 @@ export default function Routes() {
         layout={Managing}
         component={Orders}
         isPrivate
+        headerTab="/orders"
         exact
       />
       <TRoute path="/orders/details" component={DetailsOrders} />
@@ -42,6 +43,7 @@ export default function Routes() {
         path="/orders/register"
         layout={List}
         component={RegisterOrders}
+        headerTab="/orders"
         isPrivate
       />
 
@@ -49,6 +51,7 @@ export default function Routes() {
         path="/orders/edit"
         layout={List}
         component={EditOrders}
+        headerTab="/orders"
         isPrivate
       />
 
@@ -57,6 +60,7 @@ export default function Routes() {
         exact
         layout={Managing}
         component={Deliverymen}
+        headerTab="/deliverymen"
         isPrivate
       />
 
@@ -64,12 +68,14 @@ export default function Routes() {
         path="/deliverymen/register"
         component={RegisterDeliverymen}
         layout={List}
+        headerTab="/deliverymen"
         isPrivate
       />
       <Route
         path="/deliverymen/edit"
         layout={List}
         component={EditDeliverymen}
+        headerTab="/deliverymen"
         isPrivate
       />
 
@@ -78,12 +84,14 @@ export default function Routes() {
         exact
         layout={Managing}
         component={Recipients}
+        headerTab="/recipients"
         isPrivate
       />
 
       <Route
         path="/recipients/register"
         component={RegisterRecipients}
+        headerTab="/recipients"
         layout={List}
         isPrivate
       />
@@ -91,6 +99,7 @@ export default function Routes() {
         path="/recipients/edit"
         layout={Managing}
         component={EditRecipient}
+        headerTab="/recipients"
         isPrivate
       />
 
@@ -98,6 +107,7 @@ export default function Routes() {
         path="/problems"
         layout={List}
         component={DeliveryProblems}
+        headerTab="/problems"
         isPrivate
       />
     </Switch>
