@@ -10,6 +10,8 @@ export default function Header() {
   const dispatch = useDispatch();
   const user = useSelector(state => state.user.profile);
 
+  const [...active] = useSelector(state => state.selected);
+
   function handleLogOut() {
     dispatch(signOut());
   }
@@ -22,16 +24,16 @@ export default function Header() {
             <img src={logo} alt="FastFeet logo" />
           </Label>
           <div>
-            <Label to="/orders" selected>
+            <Label to="/orders" selected={active[0]}>
               Encomendas
             </Label>
-            <Label to="/deliverymen" selected={false}>
+            <Label to="/deliverymen" selected={active[1]}>
               Entregadores
             </Label>
-            <Label to="/recipients" selected={false}>
+            <Label to="/recipients" selected={active[2]}>
               Destinatários
             </Label>
-            <Label to="/problems" selected={false}>
+            <Label to="/problems" selected={active[3]}>
               Problemas
             </Label>
           </div>

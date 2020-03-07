@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Route as TRoute, Switch } from 'react-router-dom';
 
 import Route from './RouteWrapper';
 
@@ -11,6 +11,7 @@ import Managing from '~/pages/_layouts/Managing';
 import Orders from '~/pages/Orders';
 import RegisterOrders from '~/pages/Orders/Register';
 import EditOrders from '~/pages/Orders/Edit';
+import DetailsOrders from '~/pages/Orders/View';
 
 import Deliverymen from '~/pages/Deliverymen';
 import EditDeliverymen from '~/pages/Deliverymen/Edit';
@@ -23,6 +24,7 @@ import EditRecipient from '~/pages/Recipients/Edit';
 import DeliveryProblems from '~/pages/DeliveryProblems';
 
 export default function Routes() {
+  // criar reducer de array. criar uma action que ativa ESSE e zera os outros.
   return (
     <Switch>
       <Route path="/" exact component={Sign} />
@@ -34,6 +36,7 @@ export default function Routes() {
         isPrivate
         exact
       />
+      <TRoute path="/orders/details" component={DetailsOrders} />
 
       <Route
         path="/orders/register"

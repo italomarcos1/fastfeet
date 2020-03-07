@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { FaEllipsisH } from 'react-icons/fa';
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
+import Sidebar from '~/components/Sidebar';
 
 import api from '~/services/api';
 
@@ -52,9 +52,7 @@ export default function Deliverymen() {
               </small>
               <small>{man.email}</small>
 
-              <button type="button">
-                <FaEllipsisH size={30} color="#c6c6c6" />
-              </button>
+              <Sidebar route="deliverymen" />
             </li>
           ))}
         </ul>

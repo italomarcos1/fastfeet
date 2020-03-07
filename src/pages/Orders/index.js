@@ -59,7 +59,8 @@ export default function Orders() {
               <Status>
                 <span /> {order.delivered}
               </Status>
-              <Sidebar />
+
+              <Sidebar route="orders" />
             </li>
           ))}
         </ul>
