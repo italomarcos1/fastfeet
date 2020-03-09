@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Yup from 'yup';
 
 import { Form } from '@rocketseat/unform';
 
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
+
+import AsyncSelect from '~/components/Select';
 
 import api from '~/services/api';
 
@@ -15,13 +17,35 @@ export default function Register() {
     product: Yup.string().required(),
   });
 
-  async function handleAdd(data) {
-    console.tron.log(data);
+  const [deliverymen, setDeliverymen] = useState([]);
+  const [recipients, setRecipients] = useState([]);
 
-    const response = await api.post('orders', data);
+  function handleAdd(data) {
+    console.tron.log(data.recipient);
+    console.tron.log(data.deliverymen);
+    console.tron.log(data.product);
 
-    console.tron.log(response.data);
+    // disparar um alert ou toast informando o sucesso no cadasto
+    // falta conferir o schema de validação
   }
+
+  console.tron.log('rodou');
+
+  useEffect(() => {
+    async function loadSelect() {
+      const [dmen, rcp] = await Promise.all([
+        api.get('list'),
+        api.get('recipients'),
+      ]);
+      console.tron.log(dmen.data);
+      console.tron.log(rcp.data);
+      setDeliverymen(dmen.data);
+      setRecipients(rcp.data);
+    }
+    console.tron.log('fez o load');
+
+    loadSelect();
+  }, []);
 
   return (
     <>
@@ -29,26 +53,26 @@ export default function Register() {
         <h1>Cadastro de Encomendas</h1>
         <aside>
           <Button>Voltar</Button>
-          <Button className="save" type="submit">
-            Salvar
-          </Button>
+          <Button className="save">Salvar</Button>
         </aside>
       </header>
-      <Form onSubmit={handleAdd} schema={schema}>
+      <Form onSubmit={handleAdd}>
         <div>
           <span>
             <strong>Destinatário</strong>
-            <Input
-              name="recipient_name"
+            <AsyncSelect
+              name="recipient"
               type="text"
+              data={recipients}
               placeholder="Nome do destinatário"
             />
           </span>
           <span>
             <strong>Entregador</strong>
-            <Input
-              name="deliveryman_name"
-              type="text"
+            <AsyncSelect
+              name="deliverymen"
+              type="text" // existe um type 'select'?. conferir depois
+              data={deliverymen}
               placeholder="Nome do entregador"
             />
           </span>
@@ -59,7 +83,7 @@ export default function Register() {
             <Input name="product" type="text" placeholder="Nome do produto" />
           </span>
         </div>
-        <button type="submit"> clica ni eu</button>
+        <button type="submit">clica ni eu</button>
       </Form>
     </>
   );

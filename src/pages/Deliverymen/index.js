@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
-import Sidebar from '~/components/Sidebar';
+import Sidebar from './Sidebar';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Deliverymen() {
   const [deliverymen, setDeliverymen] = useState([]);
@@ -29,7 +30,12 @@ export default function Deliverymen() {
               type="text"
               placeholder="Buscar por entregadores"
             />
-            <Button className="save">Cadastrar</Button>
+            <Button
+              className="save"
+              onClick={() => history.push('/deliverymen/register')}
+            >
+              Cadastrar
+            </Button>
           </aside>
         </div>
       </header>
@@ -45,14 +51,21 @@ export default function Deliverymen() {
           {deliverymen.map(man => (
             <li key={man.id}>
               <small>{`#${man.id}`}</small>
-              <img src={man.avatar.url} alt="" />
+              <img
+                src={
+                  man.avatar
+                    ? man.avatar.url
+                    : `https://api.adorable.io/avatars/100/${man.name}@adorable.png`
+                }
+                alt=""
+              />
               <small>
                 <span>JD</span>
                 {man.name}
               </small>
               <small>{man.email}</small>
 
-              <Sidebar route="deliverymen" />
+              <Sidebar id={man.id} />
             </li>
           ))}
         </ul>

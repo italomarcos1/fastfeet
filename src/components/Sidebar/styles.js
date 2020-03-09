@@ -13,9 +13,10 @@ export const Actions = styled.div`
   left: calc(100% - 90px);
   top: calc(50% + 15px);
   width: 150px;
-  height: 120px;
-  display: flex;
+  padding: 10px 8px;
+
   flex: 1;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -34,6 +35,25 @@ export const Actions = styled.div`
   }
 
   a {
+    /** mudar pra 'Link', então isso será um A ou um styled(Link) */
+    background: none;
+    border: 0;
+    font-size: 16px;
+    color: #999;
+    padding: 3px 11px 9px;
+
+    &:hover {
+      color: ${darken(0.12, '#999')};
+    }
+
+    svg {
+      width: 15px;
+      height: 10px;
+    }
+    font-size: 16px;
+    color: #999;
+  }
+  button {
     /** mudar pra 'Link', então isso será um A ou um styled(Link) */
     background: none;
     border: 0;

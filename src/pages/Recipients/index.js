@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
-import Sidebar from '~/components/Sidebar';
+import Sidebar from './Sidebar';
 
 import api from '~/services/api';
+import history from '~/services/history';
 
 export default function Recipients() {
   const [recipients, setRecipients] = useState([]);
@@ -29,7 +30,12 @@ export default function Recipients() {
               type="text"
               placeholder="Buscar por destinatários"
             />
-            <Button className="save">Cadastrar</Button>
+            <Button
+              className="save"
+              onClick={() => history.push('/recipients/register')}
+            >
+              Cadastrar
+            </Button>
           </aside>
         </div>
       </header>
@@ -47,7 +53,7 @@ export default function Recipients() {
               <small>{recipient.name}</small>
               <small>{`Rua ${recipient.street}, ${recipient.number}, ${recipient.city} - ${recipient.state}`}</small>
 
-              <Sidebar route="recipients" />
+              <Sidebar id={recipient.id} />
             </li>
           ))}
         </ul>

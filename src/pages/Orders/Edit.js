@@ -1,10 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form } from '@rocketseat/unform';
 
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
 
+import AsyncSelect from '~/components/Select';
+import api from '~/services/api';
+
 export default function Edit() {
+  const [recipients, setRecipients] = useState([]);
+  const [deliverymen, setDeliverymen] = useState([]);
+
+  function handleEdit({ recipient, deliverymen, product }) {
+    console.tron.log(recipient);
+    console.tron.log(deliverymen);
+    console.tron.log(product);
+  }
+
+  useEffect(() => {
+    async function loadSelect() {
+      const [dmen, rcp] = await Promise.all([
+        api.get('list'),
+        api.get('recipients'),
+      ]);
+      console.tron.log(dmen.data);
+      console.tron.log(rcp.data);
+      setDeliverymen(dmen.data);
+      setRecipients(rcp.data);
+    }
+
+    loadSelect();
+  }, []);
+
   return (
     <>
       <header>
@@ -14,17 +41,23 @@ export default function Edit() {
           <Button className="save">Salvar</Button>
         </aside>
       </header>
-      <Form>
+      <Form onSubmit={handleEdit}>
         <div>
           <span>
             <strong>Destinatário</strong>
-            <Input name="name" type="text" placeholder="Nome do entregador" />
+            <AsyncSelect
+              name="recipient"
+              type="text"
+              data={recipients}
+              placeholder="Nome do destinatário"
+            />
           </span>
           <span>
             <strong>Entregador</strong>
-            <Input
-              name="deliveryman"
-              type="text"
+            <AsyncSelect
+              name="deliverymen"
+              type="text" // existe um type 'select'?. conferir depois
+              data={deliverymen}
               placeholder="Nome do entregador"
             />
           </span>
@@ -35,6 +68,7 @@ export default function Edit() {
             <Input name="product" type="text" placeholder="Nome do produto" />
           </span>
         </div>
+        <button type="submit">Clique aqui</button>
       </Form>
     </>
   );

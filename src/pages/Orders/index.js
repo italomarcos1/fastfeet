@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+
 import { TextInput as Input } from '~/components/Input';
 import { Button } from '~/components/Button';
-import Sidebar from '~/components/Sidebar';
 
 import { Status } from '~/pages/_layouts/Managing/styles';
 
 import api from '~/services/api';
+import history from '~/services/history';
+
+import Sidebar from './Sidebar';
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -31,7 +34,12 @@ export default function Orders() {
               type="text"
               placeholder="Buscar por encomendas"
             />
-            <Button className="save">Cadastrar</Button>
+            <Button
+              className="save"
+              onClick={() => history.push('/orders/register')}
+            >
+              Cadastrar
+            </Button>
           </aside>
         </div>
       </header>
@@ -60,7 +68,7 @@ export default function Orders() {
                 <span /> {order.delivered}
               </Status>
 
-              <Sidebar route="orders" />
+              <Sidebar id={order.id} />
             </li>
           ))}
         </ul>

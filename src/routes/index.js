@@ -97,7 +97,7 @@ export default function Routes() {
       />
       <Route
         path="/recipients/edit"
-        layout={Managing}
+        layout={List}
         component={EditRecipient}
         headerTab="/recipients"
         isPrivate
@@ -105,7 +105,7 @@ export default function Routes() {
 
       <Route
         path="/problems"
-        layout={List}
+        layout={Managing}
         component={DeliveryProblems}
         headerTab="/problems"
         isPrivate

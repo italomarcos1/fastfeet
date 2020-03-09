@@ -14,6 +14,14 @@ export default function Register() {
     email: Yup.string()
       .email()
       .required(),
+    password: Yup.string()
+      .required()
+      .min(6),
+    confirmPassword: Yup.string()
+      .min(6)
+      .when('password', (password, field) =>
+        password ? field.required().oneOf([Yup.ref('password')]) : field
+      ),
   });
 
   async function handleAdd(data) {
@@ -52,6 +60,26 @@ export default function Register() {
               name="email"
               type="email"
               placeholder="E-mail do entregador"
+            />
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Senha</strong>
+            <Input
+              name="password"
+              type="password"
+              placeholder="Defina uma senha"
+            />
+          </span>
+        </div>
+        <div>
+          <span>
+            <strong>Confirme a senha</strong>
+            <Input
+              name="confirmPassword"
+              type="password"
+              placeholder="Confirme a senha informada"
             />
           </span>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FaEllipsisH } from 'react-icons/fa';
+import Sidebar from './Sidebar';
 
 import api from '~/services/api';
 
@@ -30,12 +30,10 @@ export default function DeliveryProblems() {
         <ul>
           {problems.map(problem => (
             <li key={problem.id}>
-              <small>{`#${problem.id}`}</small>
+              <small>{`#${problem.delivery_id}`}</small>
               <small>{problem.description}</small>
 
-              <button type="button">
-                <FaEllipsisH size={30} color="#c6c6c6" />
-              </button>
+              <Sidebar id={problem.id} />
             </li>
           ))}
         </ul>
