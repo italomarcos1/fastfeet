@@ -11,9 +11,9 @@ export default function Edit() {
   const [recipients, setRecipients] = useState([]);
   const [deliverymen, setDeliverymen] = useState([]);
 
-  function handleEdit({ recipient, deliverymen, product }) {
+  function handleEdit({ recipient, deliverymen: dman, product }) {
     console.tron.log(recipient);
-    console.tron.log(deliverymen);
+    console.tron.log(dman);
     console.tron.log(product);
   }
 

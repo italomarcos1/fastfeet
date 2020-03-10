@@ -2,17 +2,25 @@ import styled from 'styled-components';
 import Select from 'react-select/async';
 
 export const TSelect = styled(Select)`
-  div.react-select {
+  display: flex;
+  justify-content: center;
+  padding: 6px 5px 6px 7.5px;
+
+  > div {
     border: 1px solid #ddd;
     border-radius: 4px;
-    width: 600px;
+    text-align: center;
+    justify-content: center;
     color: #999;
-    padding: 12px 10px 12px 15px;
-    text-align: left; /** sera q nao eh no placeholder? se pa cair pra todos */
+    height: 45px;
+    width: 405px;
 
     &::placeholder {
       color: #999999;
-      text-align: left;
+    }
+
+    &:focus {
+      color: #7d40e7;
     }
   }
 `;
